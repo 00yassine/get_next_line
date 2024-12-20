@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:47:37 by yassine           #+#    #+#             */
-/*   Updated: 2024/12/20 01:25:43 by yassine          ###   ########.fr       */
+/*   Updated: 2024/12/20 14:57:13 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,26 +111,4 @@ char	*get_next_line(int fd)
 	line = ft_get_line(buffer);
 	buffer = ft_get_next(buffer);
 	return (line);
-}
-
-int main(){
-	int fd1 = open("file1.txt",O_RDWR);
-	int fd2 = open("file2.txt",O_RDWR);
-	int fd3 = open("file3.txt",O_RDWR);
-	char *str;
-	char *str1;
-	char *str2;
-	while(str)
-	{
-		str = get_next_line(fd1);
-		printf("%s",str);
-		str1 = get_next_line(fd2);
-		printf("%s",str1);
-		str2 = get_next_line(fd3);
-		printf("%s",str2);
-
-		free(str);
-		free(str1);
-		free(str2);
-	}
 }
