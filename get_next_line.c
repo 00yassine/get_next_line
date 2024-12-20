@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:47:37 by yassine           #+#    #+#             */
-/*   Updated: 2024/12/20 01:19:02 by yassine          ###   ########.fr       */
+/*   Updated: 2024/12/20 01:25:43 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_get_next(char *buffer)
 		free (buffer);
 		return (NULL);
 	}
-	next = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(*buffer));
+	next = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	if (!next)
 		return (NULL);
 	i++;
