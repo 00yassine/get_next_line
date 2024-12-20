@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:47:37 by yassine           #+#    #+#             */
-/*   Updated: 2024/12/20 14:57:13 by yassine          ###   ########.fr       */
+/*   Updated: 2024/12/20 01:25:43 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*read_file(int fd, char *buffer)
 
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
-	dybuffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	dybuffer = malloc(((size_t)BUFFER_SIZE + 1) * sizeof(char));
 	if (!dybuffer)
 		return (NULL);
 	i_re = 1;
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_file(fd, buffer);
 	if (!buffer)
