@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:49:01 by yassine           #+#    #+#             */
-/*   Updated: 2024/12/20 01:04:15 by yassine          ###   ########.fr       */
+/*   Updated: 2024/12/20 01:33:08 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*read_file(int fd, char *text);
 char	*ft_get_line(char *text);
 char	*ft_get_next(char *text);
-void	*ft_calloc(unsigned int count, unsigned int size);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif

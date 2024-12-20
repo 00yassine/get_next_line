@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:48:34 by yassine           #+#    #+#             */
-/*   Updated: 2024/12/19 22:48:39 by yassine          ###   ########.fr       */
+/*   Updated: 2024/12/20 01:30:56 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,41 +36,59 @@ char	*ft_strchr(const char *s, int c)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*start;
-	char	*str;
+	char	*result;
+	int		lens1;
+	int		lens2;
 
-	if (!s1 || !s2)
+	lens1 = 0;
+	lens2 = 0;
+	if (s1)
+		lens1 = ft_strlen(s1);
+	if (s2)
+		lens2 = ft_strlen(s2);
+	result = (char *)malloc(sizeof(char) * (lens1 + lens2 + 1));
+	if (!result)
 		return (NULL);
-	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	start = str;
-	while (*s1)
-		*str++ = *s1++;
-	while (*s2)
-		*str++ = *s2++;
-	*str = '\0';
-	return (start);
+	lens1 = 0;
+	lens2 = 0;
+	while (s1 && s1[lens1] != '\0')
+	{
+		result[lens1] = s1[lens1];
+		lens1++;
+	}
+	while (s2 && s2[lens2] != '\0')
+		result[lens1++] = s2[lens2++];
+	result[lens1] = '\0';
+	return (result);
 }
 
-void	ft_bzero(void *s, unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*p;
+	size_t			i;
+	unsigned char	*t;
 
-	p = s;
-	while (n--)
-		*p++ = '\0';
+	t = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		t[i] = 0;
+		i++;
+	}
 }
 
-void	*ft_calloc(unsigned int count, unsigned int size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void	*pointer;
+	char	*ptr;
 
-	pointer = malloc(count * size);
-	if (!pointer)
+	if (size == 0 || count == 0)
+		return (malloc(0));
+	if (size != 0 && (count > SIZE_MAX / size))
 		return (NULL);
-	ft_bzero(pointer, size * count);
-	return (pointer);
+	ptr = (char *)malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
