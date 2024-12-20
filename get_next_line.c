@@ -112,3 +112,25 @@ char	*get_next_line(int fd)
 	buffer = ft_get_next(buffer);
 	return (line);
 }
+
+int main(){
+	int fd1 = open("file1.txt",O_RDWR);
+	int fd2 = open("file2.txt",O_RDWR);
+	int fd3 = open("file3.txt",O_RDWR);
+	char *str;
+	char *str1;
+	char *str2;
+	while(str)
+	{
+		str = get_next_line(fd1);
+		printf("%s",str);
+		str1 = get_next_line(fd2);
+		printf("%s",str1);
+		str2 = get_next_line(fd3);
+		printf("%s",str2);
+
+		free(str);
+		free(str1);
+		free(str2);
+	}
+}
